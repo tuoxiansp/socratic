@@ -1,0 +1,293 @@
+{
+  "map_id": "scientific-intuition-starter",
+  "title": "Starter map for rebuilding scientific intuition",
+  "description": "A small DAG for initial calibration and early math/physics learning through everyday questions.",
+  "nodes": [
+    {
+      "node_id": "observation-vs-explanation",
+      "title": "观察与解释",
+      "domain": "thinking",
+      "level": "intro",
+      "prerequisites": [],
+      "unlocks": ["variable-identification", "model-building"],
+      "learning_outcome": "用户能区分自己看到的现象和对现象的解释。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "concept_naming",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么同一杯水，有人觉得烫，有人觉得刚好？",
+        "你看到的是现象，还是你对现象的解释？"
+      ],
+      "common_misconceptions": [
+        "第一感觉就是事实",
+        "只要能说出一个原因，就说明解释成立"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "General reasoning foundation"
+        }
+      ]
+    },
+    {
+      "node_id": "variable-identification",
+      "title": "变量识别",
+      "domain": "math",
+      "level": "intro",
+      "prerequisites": ["observation-vs-explanation"],
+      "unlocks": ["proportional-reasoning", "rate-of-change", "model-building"],
+      "learning_outcome": "用户能在生活问题中识别哪些量可能影响结果。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "simple_model",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么同样一杯热水，倒进大杯子和小杯子里凉得不一样快？",
+        "如果想让咖啡冷得快一点，你会改变哪些条件？"
+      ],
+      "common_misconceptions": [
+        "只寻找一个唯一原因",
+        "把变量之间的关系想成固定不变"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Math modeling foundation"
+        }
+      ]
+    },
+    {
+      "node_id": "temperature-vs-heat",
+      "title": "温度与热量",
+      "domain": "physics",
+      "level": "intro",
+      "prerequisites": ["observation-vs-explanation"],
+      "unlocks": ["heat-transfer"],
+      "learning_outcome": "用户能区分温度、热量和冷热感觉。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "concept_naming",
+        "simple_model",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么一小杯热水和一大盆温水摸起来感觉不同？",
+        "温度高就一定代表包含的热量更多吗？"
+      ],
+      "common_misconceptions": [
+        "温度和热量是同一件事",
+        "冷是一种从物体流向人的东西"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Thermal intuition foundation"
+        }
+      ]
+    },
+    {
+      "node_id": "heat-transfer",
+      "title": "热量传递",
+      "domain": "physics",
+      "level": "intro",
+      "prerequisites": ["temperature-vs-heat", "variable-identification"],
+      "unlocks": ["material-properties", "thermal-equilibrium"],
+      "learning_outcome": "用户能解释热量如何在接触物体之间流动，并用它解释冷热触感。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "concept_naming",
+        "simple_model",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么冬天摸铁门把手会比摸木头桌子更冷？",
+        "为什么瓷砖地板比地毯更凉？"
+      ],
+      "common_misconceptions": [
+        "铁本身比木头温度更低",
+        "冷从铁传到了手上"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Everyday thermodynamics"
+        }
+      ]
+    },
+    {
+      "node_id": "rate-of-change",
+      "title": "变化率",
+      "domain": "math",
+      "level": "foundation",
+      "prerequisites": ["variable-identification"],
+      "unlocks": ["speed", "acceleration", "derivative-intuition"],
+      "learning_outcome": "用户能用'一个量相对另一个量变化得多快'来解释现象。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "concept_naming",
+        "simple_model",
+        "formal_expression",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么有些工资涨幅看起来每年都一样，实际增加的钱却越来越多？",
+        "为什么同样是变快，有时感觉很平稳，有时很猛？"
+      ],
+      "common_misconceptions": [
+        "只看总变化，不看单位变化",
+        "把平均变化和局部变化混为一谈"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Bridge to calculus"
+        }
+      ]
+    },
+    {
+      "node_id": "speed",
+      "title": "速度",
+      "domain": "physics",
+      "level": "foundation",
+      "prerequisites": ["rate-of-change"],
+      "unlocks": ["acceleration"],
+      "learning_outcome": "用户能把速度理解为位置相对时间的变化率。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "concept_naming",
+        "simple_model",
+        "formal_expression",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么同样走 1 公里，有人说远，有人说不远？",
+        "如果一辆车每秒走过的距离不一样，我们该怎么描述它的运动？"
+      ],
+      "common_misconceptions": [
+        "速度只等于快慢感觉",
+        "忽略速度需要和时间绑定"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Mechanics foundation"
+        }
+      ]
+    },
+    {
+      "node_id": "acceleration",
+      "title": "加速度",
+      "domain": "physics",
+      "level": "foundation",
+      "prerequisites": ["speed", "rate-of-change"],
+      "unlocks": ["force-intuition", "derivative-intuition"],
+      "learning_outcome": "用户能把加速度理解为速度的变化率，而不是单纯'很快'。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "concept_naming",
+        "simple_model",
+        "formal_expression",
+        "transfer"
+      ],
+      "example_questions": [
+        "为什么电梯刚启动时身体会有感觉，但匀速上升时感觉不明显？",
+        "为什么车猛踩油门和稳定高速行驶的身体感受不同？"
+      ],
+      "common_misconceptions": [
+        "速度大就一定加速度大",
+        "加速度只表示越来越快，不包括越来越慢"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Mechanics and calculus bridge"
+        }
+      ]
+    },
+    {
+      "node_id": "model-building",
+      "title": "建模",
+      "domain": "thinking",
+      "level": "foundation",
+      "prerequisites": ["observation-vs-explanation", "variable-identification"],
+      "unlocks": ["derivative-intuition"],
+      "learning_outcome": "用户能把现实问题简化成可讨论的变量、关系和假设。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "simple_model",
+        "transfer"
+      ],
+      "example_questions": [
+        "如果要估计一杯咖啡多久变凉，你会保留哪些因素，忽略哪些因素？",
+        "什么时候一个模型有用，即使它并不完全真实？"
+      ],
+      "common_misconceptions": [
+        "模型必须完全真实才有价值",
+        "简化等于错误"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Scientific reasoning foundation"
+        }
+      ]
+    },
+    {
+      "node_id": "derivative-intuition",
+      "title": "导数直觉",
+      "domain": "math",
+      "level": "foundation",
+      "prerequisites": ["rate-of-change", "model-building"],
+      "unlocks": [],
+      "learning_outcome": "用户能把导数理解为局部变化率，并连接到速度、增长和斜率。",
+      "abstraction_ladder": [
+        "life_observation",
+        "intuition",
+        "variable_identification",
+        "concept_naming",
+        "simple_model",
+        "formal_expression",
+        "transfer"
+      ],
+      "example_questions": [
+        "如果一个量此刻变化得很快，我们要怎样描述这个'此刻'的变化？",
+        "为什么看一段路的平均速度，不一定能说明某一瞬间有多快？"
+      ],
+      "common_misconceptions": [
+        "导数只是一个公式",
+        "导数只和曲线斜率有关，和现实变化无关"
+      ],
+      "source_refs": [
+        {
+          "title": "Internal starter map",
+          "type": "internal",
+          "note": "Calculus intuition"
+        }
+      ]
+    }
+  ]
+}

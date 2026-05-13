@@ -1,0 +1,81 @@
+{
+  "lesson_seeds": [
+    {
+      "seed_id": "cold-metal-handle",
+      "target_nodes": ["temperature-vs-heat", "heat-transfer"],
+      "recommended_lesson_type": "misconception_repair",
+      "question": "为什么冬天摸铁门把手会比摸木头桌子更冷？它们明明在同一个房间里。",
+      "good_for": ["proactive", "calibration"],
+      "expected_intuitions": [
+        "铁本身更冷",
+        "铁把手上的热带走得更快",
+        "木头比较保暖"
+      ],
+      "hint_ladder": [
+        "如果它们在同一个房间放了一整晚，你觉得它们温度真的不同吗？",
+        "你的手觉得冷，可能是手上的热量发生了什么变化？",
+        "如果一种材料更快把热从手带走，你的感觉会怎样？"
+      ],
+      "minimum_teaching_point": "温度相同不代表触感相同。铁更容易把热从手传走，所以手降温更快，感觉更冷。",
+      "transfer_check": "为什么瓷砖地板通常比地毯摸起来更凉？"
+    },
+    {
+      "seed_id": "elevator-starting",
+      "target_nodes": ["speed", "acceleration", "rate-of-change"],
+      "recommended_lesson_type": "new_concept",
+      "question": "为什么电梯刚启动或刚停下时身体会有感觉，但匀速上升时感觉不明显？",
+      "good_for": ["proactive", "on_demand"],
+      "expected_intuitions": [
+        "电梯刚开始比较快",
+        "身体跟不上电梯",
+        "速度变化时感觉明显"
+      ],
+      "hint_ladder": [
+        "匀速上升时电梯也在运动，为什么身体感觉反而不明显？",
+        "身体更容易感觉到速度本身，还是速度的变化？",
+        "如果速度变化得越快，身体感受会怎样？"
+      ],
+      "minimum_teaching_point": "身体更明显感受到的是速度变化，也就是加速度，而不是速度本身。",
+      "transfer_check": "为什么车猛踩油门时身体后仰，但稳定高速行驶时不一定有这种感觉？"
+    },
+    {
+      "seed_id": "coffee-cooling-model",
+      "target_nodes": ["variable-identification", "model-building"],
+      "recommended_lesson_type": "calibration",
+      "question": "如果想估计一杯咖啡多久会变凉，你觉得哪些因素会影响它？",
+      "good_for": ["calibration", "on_demand"],
+      "expected_intuitions": [
+        "杯子的大小",
+        "室温",
+        "有没有盖子",
+        "咖啡本来有多热"
+      ],
+      "hint_ladder": [
+        "哪些因素属于咖啡本身？哪些因素属于环境？",
+        "哪些因素你觉得影响很大，哪些可以先忽略？",
+        "如果我们只保留两三个因素，模型会不会仍然有用？"
+      ],
+      "minimum_teaching_point": "建模不是把现实完整复制下来，而是保留最影响结果的变量，先得到一个能解释问题的简化版本。",
+      "transfer_check": "如果换成估计手机电量多久用完，你会保留哪些变量？"
+    },
+    {
+      "seed_id": "salary-growth-rate",
+      "target_nodes": ["rate-of-change", "derivative-intuition"],
+      "recommended_lesson_type": "new_concept",
+      "question": "如果工资每年都涨 10%，为什么后面几年每次增加的钱会越来越多？",
+      "good_for": ["on_demand"],
+      "expected_intuitions": [
+        "因为基数变大了",
+        "百分比一样但金额不一样",
+        "增长会叠加"
+      ],
+      "hint_ladder": [
+        "10% 是相对谁的 10%？",
+        "如果今年的基数比去年大，同样的百分比会带来什么变化？",
+        "这里真正固定的是增加的钱，还是增加的比例？"
+      ],
+      "minimum_teaching_point": "增长率描述的是相对变化。相同增长率作用在更大的基数上，会产生更大的绝对变化。",
+      "transfer_check": "为什么投资收益按固定比例复利时，越到后面增长越明显？"
+    }
+  ]
+}

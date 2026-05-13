@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/learner-state.schema.json",
+  "title": "LearnerNodeState",
+  "type": "object",
+  "required": [
+    "node_id",
+    "status",
+    "mastery",
+    "confidence",
+    "exposure_count",
+    "evidence",
+    "active_misconceptions"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["unseen", "learning", "review", "mastered", "blocked"]
+    },
+    "mastery": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "last_seen_at": {
+      "type": "string"
+    },
+    "next_review_at": {
+      "type": "string"
+    },
+    "exposure_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "result", "summary"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "initial_intuition",
+              "restatement",
+              "transfer_question",
+              "counterexample_response",
+              "calculation",
+              "self_reflection"
+            ]
+          },
+          "result": {
+            "type": "string",
+            "enum": ["success", "partial", "failed", "skipped"]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "active_misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

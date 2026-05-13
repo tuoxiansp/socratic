@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/learning-goal.schema.json",
+  "title": "LearningGoal",
+  "type": "object",
+  "required": [
+    "goal_id",
+    "title",
+    "user_motivation",
+    "preferred_style",
+    "target_domains",
+    "current_phase"
+  ],
+  "properties": {
+    "goal_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "user_motivation": {
+      "type": "string"
+    },
+    "desired_identity": {
+      "type": "string"
+    },
+    "preferred_style": {
+      "type": "string"
+    },
+    "target_domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "current_phase": {
+      "type": "string",
+      "enum": [
+        "intent_discovery",
+        "calibration",
+        "build_intuition",
+        "formalize",
+        "practice_transfer",
+        "synthesis",
+        "maintenance"
+      ]
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "session_minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "avoid_school_language": {
+          "type": "boolean"
+        },
+        "calculation_intensity": {
+          "type": "string",
+          "enum": ["none", "low", "medium", "high"]
+        },
+        "preferred_push_frequency": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

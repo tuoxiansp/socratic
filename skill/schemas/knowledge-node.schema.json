@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/knowledge-node.schema.json",
+  "title": "KnowledgeNode",
+  "type": "object",
+  "required": [
+    "node_id",
+    "title",
+    "domain",
+    "level",
+    "prerequisites",
+    "unlocks",
+    "learning_outcome",
+    "abstraction_ladder",
+    "example_questions",
+    "common_misconceptions"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["intro", "foundation", "intermediate", "advanced"]
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unlocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "learning_outcome": {
+      "type": "string"
+    },
+    "abstraction_ladder": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "life_observation",
+          "intuition",
+          "variable_identification",
+          "concept_naming",
+          "simple_model",
+          "formal_expression",
+          "calculation",
+          "transfer"
+        ]
+      }
+    },
+    "example_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "common_misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "type"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["internal", "textbook", "web", "user"]
+          },
+          "url": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,59 @@
+{
+  "patterns": [
+    {
+      "pattern_id": "explicit-subject-goal",
+      "user_expression": "我想学某个明确学科或技能",
+      "examples": ["我想学线性代数", "我想学 Python", "我想重新学物理"],
+      "coach_response": "Clarify purpose before generating a path.",
+      "useful_questions": [
+        "你想学它主要是为了工作、兴趣、理解世界，还是重新建立信心？",
+        "你希望多久看到一个可感知的进展？",
+        "你过去学它时最容易卡在哪里？"
+      ]
+    },
+    {
+      "pattern_id": "vague-curiosity",
+      "user_expression": "用户表达模糊好奇，但没有明确课程名",
+      "examples": ["我想理解 AI", "我想知道宇宙是怎么运转的", "我想更懂现代社会"],
+      "coach_response": "Turn curiosity into a learning map with several possible routes.",
+      "useful_questions": [
+        "你更想理解原理、历史、现实影响，还是自己动手做出来？",
+        "你希望这个学习最终帮你解释什么问题？",
+        "有没有一个你一直想问但没系统追过的问题？"
+      ]
+    },
+    {
+      "pattern_id": "anxiety-driven",
+      "user_expression": "用户的学习动机来自焦虑或时代压力",
+      "examples": ["我怕被 AI 淘汰", "感觉自己跟不上时代", "我不知道现在该学什么"],
+      "coach_response": "Stabilize emotion, then build a small path toward agency.",
+      "useful_questions": [
+        "这种焦虑最具体地来自哪一类变化？",
+        "你希望先恢复哪种能力感：理解、创造、表达，还是判断？",
+        "我们可以先从一个很小但能带来掌控感的目标开始吗？"
+      ]
+    },
+    {
+      "pattern_id": "learning-repair",
+      "user_expression": "用户想修复过去的学习挫败或畏惧",
+      "examples": ["我从小数学不好", "我一看到公式就害怕", "我想重新证明自己还能学会"],
+      "coach_response": "Use low-pressure questions, avoid school framing, and prioritize confidence evidence.",
+      "useful_questions": [
+        "你过去最不喜欢哪种学习体验？",
+        "如果这次学习不考试、不排名，你最想先理解什么？",
+        "我们先用生活问题进入，可以吗？"
+      ]
+    },
+    {
+      "pattern_id": "identity-seeking",
+      "user_expression": "用户想通过学习靠近某种自我形象",
+      "examples": ["我想成为更有思想的人", "我想更理性", "我想成为能理解世界的人"],
+      "coach_response": "Translate desired identity into durable learning practices and domains.",
+      "useful_questions": [
+        "你说的更有思想，具体希望体现在哪些场景？",
+        "你更想增强判断力、表达力、创造力，还是理解复杂系统的能力？",
+        "你希望未来的自己能问出什么样的问题？"
+      ]
+    }
+  ]
+}

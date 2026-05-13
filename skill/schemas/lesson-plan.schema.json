@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/lesson-plan.schema.json",
+  "title": "LessonPlan",
+  "type": "object",
+  "required": [
+    "lesson_id",
+    "mode",
+    "lesson_type",
+    "target_nodes",
+    "question",
+    "teaching_goal",
+    "expected_intuitions",
+    "socratic_prompt_sequence",
+    "minimum_teaching_point",
+    "transfer_check",
+    "completion_criteria",
+    "state_update_hints"
+  ],
+  "properties": {
+    "lesson_id": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["proactive", "on_demand"]
+    },
+    "lesson_type": {
+      "type": "string",
+      "enum": [
+        "intent_discovery",
+        "calibration",
+        "new_concept",
+        "review",
+        "misconception_repair",
+        "synthesis",
+        "confidence_rebuild"
+      ]
+    },
+    "target_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "question": {
+      "type": "string"
+    },
+    "teaching_goal": {
+      "type": "string"
+    },
+    "expected_intuitions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "socratic_prompt_sequence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "minimum_teaching_point": {
+      "type": "string"
+    },
+    "transfer_check": {
+      "type": "string"
+    },
+    "completion_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "state_update_hints": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/learning-event.schema.json",
+  "title": "LearningEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "created_at",
+    "summary_for_future_agent"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "goal_created",
+        "graph_created",
+        "calibration_completed",
+        "lesson_planned",
+        "lesson_started",
+        "lesson_completed",
+        "lesson_abandoned",
+        "misconception_found",
+        "misconception_resolved",
+        "review_scheduled"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["proactive", "on_demand"]
+    },
+    "target_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lesson_result": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "success",
+        "partial_mastery",
+        "misconception_found",
+        "blocked",
+        "skipped"
+      ]
+    },
+    "summary_for_future_agent": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "result", "summary"],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": ["success", "partial", "failed", "skipped"]
+          },
+          "summary": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "new_misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resolved_misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "enum": [
+        "continue_new_concept",
+        "review",
+        "transfer_practice",
+        "misconception_repair",
+        "synthesis",
+        "confidence_rebuild",
+        "pause"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
