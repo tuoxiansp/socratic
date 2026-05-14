@@ -19,7 +19,9 @@ The runtime may map `<runtime_memory_root>` to a database, object store, local f
 
 ## Namespace Layout
 
-Recommended logical layout:
+Required logical layout for writable runtimes:
+
+A writable runtime must store Socratic learner state using this logical layout. If it finds legacy Socratic learning state without a matching `state_schema_version`, it must back up and migrate that state into this layout before continuing normal writes.
 
 ```text
 socratic/

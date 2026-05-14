@@ -39,6 +39,32 @@ Current versions:
 }
 ```
 
+## Migration Required Conditions
+
+Migration decisions must be based only on `state_schema_version`.
+
+Determine the current state schema version this way:
+
+1. If `socratic/manifest.json` exists and contains `state_schema_version`, use that value.
+2. If Socratic learner state exists but no `state_schema_version` can be found, treat it as `legacy-unversioned`.
+3. If no Socratic learner state exists, no state migration is needed.
+
+Known legacy Socratic state includes older files such as `memory/learning/*.json` or `memory/learning/linear-algebra-*.json`, and any Socratic learning files that do not belong to the required `socratic/` layout with a manifest.
+
+Migration is required when the current state schema version is `legacy-unversioned` or differs from the target `state_schema_version` supported by the new skill.
+
+Do not skip migration because legacy files appear compatible at runtime. Do not use behavioral compatibility, file naming similarity, or successful ad hoc reads as reasons to leave old state in place.
+
+If migration is required and the runtime has write permission, the agent or runtime must create a backup and migrate automatically. It must not merely report the mismatch to the user or ask whether migration should happen.
+
+The agent may stop and ask the user only when one of these blockers occurs:
+
+- the runtime does not have write permission
+- the learner identity or memory root cannot be determined
+- the legacy data cannot be mapped without likely data loss
+- backup creation fails
+- migrated data fails validation
+
 ## Compatibility Rules
 
 Patch skill updates may clarify prompts, examples, or documentation. They must not require state migration.
@@ -54,11 +80,11 @@ During `0.x`, any state model change may still be breaking. Treat changes to req
 When installing a new Socratic skill version over an existing one:
 
 1. Read the old installed skill version and the new skill version.
-2. Read `socratic/manifest.json`.
-3. Check whether the new skill supports the stored `state_schema_version`.
+2. Determine the current state schema version using the rules above.
+3. Check whether the new skill supports that `state_schema_version`.
 4. Lock the learner namespace or pause writes for the affected user.
 5. Create a backup under `socratic/backups/<timestamp>-pre-update-<old>-to-<new>/`.
-6. If migration is needed, migrate into a temporary namespace, not in place.
+6. When migration is required, migrate into a temporary namespace, not in place.
 7. Validate migrated files against the schemas in the new skill.
 8. Run integrity checks described below.
 9. Atomically promote the migrated namespace.
