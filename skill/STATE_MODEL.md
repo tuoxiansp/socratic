@@ -2,6 +2,10 @@
 
 The learning coach depends on structured state. The agent may reason flexibly, but state shapes should stay stable.
 
+Runtime persistence layout, filenames, and write order are defined in [PERSISTENCE.md](PERSISTENCE.md). Skill and state migration rules are defined in [UPDATE_POLICY.md](UPDATE_POLICY.md).
+
+Persisted Socratic state should be versioned with `state_schema_version` in the runtime state manifest, separate from the skill package version.
+
 ## Learning Goal
 
 Represents what the user wants to move toward.
@@ -76,6 +80,14 @@ Do not mark a node as mastered only because the user said "I understand." Prefer
 
 Append-only record of an interaction. Events are the audit trail for state updates.
 
+Key fields:
+
+- `event_id`
+- `goal_id`: the learning goal this event belongs to
+- `event_type`
+- `created_at`
+- `summary_for_future_agent`
+
 Useful event types:
 
 - `goal_created`
@@ -88,6 +100,7 @@ Useful event types:
 - `misconception_found`
 - `misconception_resolved`
 - `review_scheduled`
+- `state_redacted`
 
 ## Lesson Plan
 

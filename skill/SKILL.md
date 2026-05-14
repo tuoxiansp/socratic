@@ -1,5 +1,6 @@
 ---
 name: socratic
+version: "0.1.0"
 description: Builds personalized learning plans, knowledge graphs, and Socratic lesson flows for proactive learning agents. Use when a user wants an AI learning coach, active lesson planning, daily learning prompts, knowledge-map based study, or on-demand guided learning.
 ---
 
@@ -80,7 +81,11 @@ Required state families:
 
 For the state model, read [STATE_MODEL.md](STATE_MODEL.md).
 
+For runtime-owned persistence layout, read [PERSISTENCE.md](PERSISTENCE.md).
+
 For orchestration details, read [RUNBOOK.md](RUNBOOK.md).
+
+For skill update and state migration policy, read [UPDATE_POLICY.md](UPDATE_POLICY.md).
 
 For examples, read [EXAMPLES.md](EXAMPLES.md).
 

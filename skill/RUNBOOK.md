@@ -8,7 +8,7 @@ The runtime should provide:
 
 - schedule or wake-up trigger
 - user session channel
-- memory read and write
+- memory read and write using the layout in [PERSISTENCE.md](PERSISTENCE.md)
 - retrieval tools
 - notification delivery
 - timestamp and locale
@@ -120,6 +120,15 @@ After a lesson, write:
 - review timing hint
 
 Prefer append-only learning events plus small node-state patches. Do not rewrite history.
+
+Persist the update using this order:
+
+1. Append the learning event.
+2. Write learner node state updates.
+3. Replace or archive the active lesson plan.
+4. Update the runtime state manifest timestamp.
+
+If any write fails, keep the previous state readable and retry from the append-only event when possible.
 
 ## Retrieval Procedure
 

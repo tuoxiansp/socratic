@@ -5,12 +5,16 @@
   "type": "object",
   "required": [
     "event_id",
+    "goal_id",
     "event_type",
     "created_at",
     "summary_for_future_agent"
   ],
   "properties": {
     "event_id": {
+      "type": "string"
+    },
+    "goal_id": {
       "type": "string"
     },
     "event_type": {
@@ -25,7 +29,8 @@
         "lesson_abandoned",
         "misconception_found",
         "misconception_resolved",
-        "review_scheduled"
+        "review_scheduled",
+        "state_redacted"
       ]
     },
     "created_at": {

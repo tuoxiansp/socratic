@@ -55,7 +55,10 @@ Expected lesson plan:
 
 ```json
 {
+  "event_id": "event_20260514_heat_transfer_001",
+  "goal_id": "rebuild-scientific-intuition",
   "event_type": "lesson_completed",
+  "created_at": "2026-05-14T00:00:00Z",
   "mode": "proactive",
   "target_nodes": ["heat-transfer"],
   "lesson_result": "partial_mastery",

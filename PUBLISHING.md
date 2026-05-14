@@ -12,7 +12,9 @@ Publish this folder:
 skill/
 ├── SKILL.md
 ├── STATE_MODEL.md
+├── PERSISTENCE.md
 ├── RUNBOOK.md
+├── UPDATE_POLICY.md
 ├── EXAMPLES.md
 ├── schemas/
 └── knowledge/
@@ -24,8 +26,10 @@ Do not publish the repository root as the skill package. The root contains proje
 
 - `skill/SKILL.md` exists.
 - `skill/SKILL.md` frontmatter has `name` and `description`.
+- `skill/SKILL.md` frontmatter has a valid semantic `version`.
 - The skill name is `socratic`.
 - All JSON files under `skill/schemas/` and `skill/knowledge/` parse successfully.
+- Persistence layout and migration rules are current in `skill/PERSISTENCE.md` and `skill/UPDATE_POLICY.md`.
 - No secrets, private user data, API keys, or local machine paths are included.
 - Supporting files are text-based.
 - The install prompt in `INSTALL.md` points to the correct public repository URL.
@@ -41,6 +45,7 @@ python3 -m json.tool skill/schemas/knowledge-node.schema.json >/dev/null
 python3 -m json.tool skill/schemas/learner-state.schema.json >/dev/null
 python3 -m json.tool skill/schemas/lesson-plan.schema.json >/dev/null
 python3 -m json.tool skill/schemas/learning-event.schema.json >/dev/null
+python3 -m json.tool skill/schemas/runtime-state-manifest.schema.json >/dev/null
 python3 -m json.tool skill/knowledge/starter-knowledge-map.json >/dev/null
 python3 -m json.tool skill/knowledge/starter-lessons.json >/dev/null
 python3 -m json.tool skill/knowledge/intent-patterns.json >/dev/null
@@ -101,6 +106,13 @@ Create a new version when:
 - state schemas change
 - starter knowledge changes significantly
 - OpenClaw metadata or install requirements change
+
+Follow `skill/UPDATE_POLICY.md` when publishing an update. In particular:
+
+- keep runtime-owned learner state outside `skills/socratic/`
+- bump `state_schema_version` when persisted state shape or layout changes
+- document required migrations before publishing
+- validate migrated state against the schemas before promotion
 
 ## Security Notes
 
