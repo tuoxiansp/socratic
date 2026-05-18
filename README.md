@@ -4,50 +4,52 @@
 ![Status](https://img.shields.io/badge/status-early%20skill%20spec-blue)
 ![Runtime](https://img.shields.io/badge/runtime-platform%20neutral-lightgrey)
 
-**一个平台无关的 AI 学习教练 Skill：每天一个真正有分量的问题，重建数学、物理和科学直觉。**
+**A platform-neutral AI learning coach skill: one meaningful question a day to rebuild mathematical, physical, and scientific intuition.**
 
-Socratic 不是课程平台，也不是“直接给答案”的聊天机器人。它把用户模糊的学习愿望转成可持续推进的学习路径：先抛出一个值得认真思考的问题，让用户表达直觉，再通过追问、提示、最小讲解和迁移题，帮助用户真正理解一个概念。
+[简体中文](README.zh-CN.md)
 
-这个仓库当前发布的是可复用的 Agent Skill，核心产物位于 [`skill/`](skill/)。
+Socratic is not a course platform, and it is not a chatbot that simply gives answers. It turns a user's vague learning intention into a sustainable learning path: start with a question worth thinking about, ask the user to express their intuition, then use follow-up questions, hints, minimal explanations, and transfer checks to help them truly understand a concept.
 
-## 为什么做这个项目
+This repository currently publishes a reusable Agent Skill. The core artifact lives in [`skill/`](skill/).
 
-AI 会继续自动化确定性任务，但人仍然需要理解复杂世界、迁移知识、判断模型是否可靠。很多成年人想重新学习数学、物理或科学思维，却很难再从教材第一章开始。
+## Why This Exists
 
-Socratic 的假设是：成年人缺的往往不是更多内容，而是一个低压力、低摩擦、但足够有智识密度的入口。
+AI will keep automating deterministic work, but people still need to understand complex systems, transfer knowledge, and judge whether models are reliable. Many adults want to relearn math, physics, or scientific thinking, but restarting from chapter one of a textbook is a high-friction path.
+
+Socratic starts from a simple assumption: adults often do not need more content. They need a low-pressure, low-friction entry point with enough intellectual density to be worth returning to.
 
 ```text
-一个复杂系统问题：不是加资源就一定变好。
+A complex systems question: adding resources does not always make things better.
 
-如果一个城市道路越修越宽，为什么拥堵有时反而没有缓解，甚至更严重？
+If a city keeps widening its roads, why might congestion fail to improve, or even get worse?
 
-这个问题会带你理解反馈回路、诱导需求和系统建模：当我们改变一个系统时，系统里的人也会改变行为。
+This question introduces feedback loops, induced demand, and systems modeling: when we change a system, the people inside the system also change their behavior.
 ```
 
-## 核心能力
+## Core Capabilities
 
-- **苏格拉底式引导**：用户第一次尝试前不直接给标准答案，而是用追问、反例和分层提示帮助用户自己推进。
-- **个性化学习路径**：从用户动机、恐惧、目标身份和当前能力出发，生成下一步学习计划。
-- **知识图谱驱动**：用概念节点、前置关系、常见误解和示例问题组织学习内容。
-- **结构化学习状态**：记录掌握证据、误解、复习时机和学习事件，而不是只依赖聊天历史。
-- **主动与按需两种入口**：支持每日轻量推送，也支持用户主动要求继续学习。
-- **平台无关 Skill 包**：教学策略、状态模型和运行手册与具体系统解耦，可接入 OpenClaw 等主动式 agent。
+- **Socratic guidance**: before the user's first attempt, the skill avoids giving the standard answer directly and instead uses questions, counterexamples, and layered hints to help the user move forward.
+- **Personalized learning paths**: generates the next learning step from the user's motivation, fears, target identity, and current ability.
+- **Knowledge graph driven**: organizes learning content with concept nodes, prerequisites, common misconceptions, and example questions.
+- **Structured learning state**: records evidence of mastery, misconceptions, review timing, and learning events instead of relying only on chat history.
+- **Proactive and on-demand entry points**: supports lightweight daily prompts as well as user-initiated learning sessions.
+- **Platform-neutral skill package**: decouples teaching strategy, state models, and runbooks from any specific runtime, so it can plug into proactive agents such as OpenClaw.
 
-## 适合谁
+## Who It Is For
 
-Socratic 首先面向那些想重新开始学习，但一想到“系统学习”就感到压力的人。
+Socratic is primarily for people who want to start learning again, but feel pressure as soon as learning becomes "systematic."
 
-- 你可能离开数学、物理和科学训练很久了，但仍然希望重新理解这个世界。
-- 你不想再被考试、排名、公式堆砌和“从第一章开始”劝退。
-- 你希望 AI 不只是告诉你答案，而是陪你把自己的直觉训练得更清楚。
-- 你每天只有十几分钟，但想长期积累真正可迁移的思考能力。
-- 你正在做学习产品或教育工具，想参考一种更克制、更重视长期学习状态的交互方式。
+- You may have been away from math, physics, or scientific training for a long time, but still want to understand the world more clearly.
+- You do not want exams, rankings, formula dumps, or "start from chapter one" to block you again.
+- You want AI to do more than tell you the answer. You want it to help you sharpen your own intuition.
+- You only have ten or twenty minutes a day, but want to build thinking skills that transfer.
+- You are building a learning product or education tool and want a restrained interaction model that takes long-term learning state seriously.
 
-当前仓库提供的是 Socratic 的核心教学能力包，不是一个完整 App。它可以接入 OpenClaw 这类主动式 agent，也适合被产品团队改造成自己的学习体验。
+This repository provides Socratic's core teaching capability package, not a complete app. It can be connected to proactive agents such as OpenClaw, or adapted by product teams into their own learning experience.
 
-## 快速开始
+## Quick Start
 
-如果你已经有一个支持 Skills 的 OpenClaw workspace，最快的方式是把下面这段 prompt 交给具备 workspace 权限的 agent：
+If you already have an OpenClaw workspace that supports Skills, the fastest path is to give the following prompt to an agent with workspace access:
 
 ```text
 Install the skill "Socratic" from this repository:
@@ -68,45 +70,44 @@ After installing:
 4. Tell me whether I need to start a new OpenClaw session or restart the gateway for the skill to load.
 ```
 
-更完整的安装和更新说明见 [`INSTALL.md`](INSTALL.md)。
+For fuller installation and update instructions, see [`INSTALL.md`](INSTALL.md).
 
-## 它如何工作
+## How It Works
 
-每次学习都尽量形成一个短闭环：
+Each learning session tries to form a short loop:
 
-1. 读取学习目标、用户画像、近期学习事件和相关知识节点。
-2. 选择下一步动作：校准、引入新概念、修复误解、复习、综合练习或降低抽象度。
-3. 生成一个具体问题、一条提示阶梯、一个最小教学点和一个迁移检查。
-4. 与用户进行苏格拉底式对话，先观察直觉，再逐步释放提示。
-5. 根据复述、迁移题、反例回应等证据更新学习状态。
-6. 追加学习事件，给未来 agent 留下可检索、可迁移的状态。
+1. Read the learning goals, learner profile, recent learning events, and relevant knowledge nodes.
+2. Choose the next action: calibrate, introduce a new concept, repair a misconception, review, synthesize, or lower the abstraction level.
+3. Generate a concrete question, a hint ladder, a minimal teaching point, and a transfer check.
+4. Run a Socratic dialogue with the user: observe intuition first, then release hints step by step.
+5. Update learning state from evidence such as restatements, transfer answers, and responses to counterexamples.
+6. Append a learning event so future agents can retrieve and transfer state.
 
-更完整的编排流程见 [`skill/RUNBOOK.md`](skill/RUNBOOK.md)。
+For the fuller orchestration flow, see [`skill/RUNBOOK.md`](skill/RUNBOOK.md).
 
-## 示例：下一课计划
+## Example: Next Lesson Plan
 
 ```json
 {
   "mode": "proactive",
   "lesson_type": "new_concept",
   "target_nodes": ["complex-systems", "feedback-loops", "induced-demand"],
-  "question": "一个复杂系统问题：不是加资源就一定变好。如果一个城市道路越修越宽，为什么拥堵有时反而没有缓解，甚至更严重？",
-  "teaching_goal": "帮助用户理解系统中的行为反馈：当道路容量改变，人的出行选择也会改变，最终结果可能抵消原本的干预效果。",
+  "question": "A complex systems question: adding resources does not always make things better. If a city keeps widening its roads, why might congestion fail to improve, or even get worse?",
+  "teaching_goal": "Help the learner understand behavioral feedback in systems: when road capacity changes, people's travel choices also change, and the final result may offset the original intervention.",
   "socratic_prompt_sequence": [
-    "如果道路变宽后通勤时间短了，会不会有一部分原本不开车的人开始开车？",
-    "当更多人因为开车更方便而上路，原本新增的道路容量会发生什么变化？",
-    "如果每个人的选择都是理性的，为什么整个系统的结果仍然可能变差？"
+    "If wider roads make commute times shorter, might some people who previously did not drive start driving?",
+    "When more people drive because driving becomes more convenient, what happens to the newly added road capacity?",
+    "If each person's choice is individually rational, why can the overall system still get worse?"
   ],
-  "minimum_teaching_point": "复杂系统里，干预不会只改变一个变量。道路变宽会降低出行成本，出行成本下降会诱导更多驾驶需求，新增需求又会反过来吞掉新增容量。",
-  "transfer_check": "如果一个 App 为了提升活跃度不断增加推送，为什么用户反而可能更快关闭通知？这个问题和修路缓解拥堵有什么相似之处？"
+  "minimum_teaching_point": "In a complex system, an intervention does not change only one variable. Widening roads lowers the cost of driving; lower travel cost induces more driving demand; that new demand can consume the added capacity.",
+  "transfer_check": "If an app keeps adding notifications to increase engagement, why might users become more likely to turn notifications off? How is that similar to widening roads to reduce congestion?"
 }
 ```
 
-更多输入、计划和学习事件样例见 [`skill/EXAMPLES.md`](skill/EXAMPLES.md)。
+For more input, plan, and learning event examples, see [`skill/EXAMPLES.md`](skill/EXAMPLES.md).
 
-## 愿景
+## Vision
 
-Socratic 想探索一种新的学习关系：AI 不再只是更快的答案机器，而是一个能长期陪伴、能记住你的误解、能保护你的好奇心、也能把你推向更深处的学习伙伴。
+Socratic explores a different learning relationship: AI is not just a faster answer machine, but a learning partner that can stay with you over time, remember your misconceptions, protect your curiosity, and push you toward deeper understanding.
 
-我们希望它最终帮助更多成年人重新获得一种感觉：数学、物理和科学不是学校里留下的压力，而是一套仍然可以被重新点亮的理解世界的工具。
-
+The hope is to help more adults recover a feeling that may have gone missing: math, physics, and science are not just sources of pressure from school. They are tools for understanding the world, and they can be lit up again.
