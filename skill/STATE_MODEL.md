@@ -6,6 +6,45 @@ Runtime persistence layout, filenames, and write order are defined in [PERSISTEN
 
 Persisted Socratic state should be versioned with `state_schema_version` in the runtime state manifest, separate from the skill package version.
 
+## Learner Profile
+
+Represents user-level preferences that apply across goals.
+
+Key fields:
+
+- `learner_key`: stable runtime learner key
+- `locale`: preferred language or locale
+- `timezone`: user's timezone for scheduling
+- `preferred_pace`: overall learning pace
+- `session_minutes`: preferred default session length
+- `notification_preferences`: whether and how proactive lesson pushes are allowed
+
+Example:
+
+```json
+{
+  "learner_key": "user_opaque123",
+  "locale": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "preferred_pace": "gentle",
+  "session_minutes": 15,
+  "notification_preferences": {
+    "enabled": true,
+    "frequency": "daily",
+    "preferred_time_window": {
+      "start": "20:00",
+      "end": "21:30"
+    },
+    "quiet_hours": {
+      "start": "22:30",
+      "end": "09:00"
+    },
+    "quiet_days": [],
+    "max_push_length": "one_question"
+  }
+}
+```
+
 ## Learning Goal
 
 Represents what the user wants to move toward.
@@ -143,7 +182,7 @@ Evidence result values:
 
 When choosing what to teach next:
 
-1. If the user is new, run calibration with low-stakes questions.
+1. If the user is new, run calibration with low-stakes questions and collect push preferences.
 2. If a target node has unmet prerequisites, choose the weakest prerequisite.
 3. If the user recently failed transfer, schedule transfer practice.
 4. If a misconception is active, repair it before adding more abstraction.

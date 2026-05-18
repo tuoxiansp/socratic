@@ -190,6 +190,7 @@ skill/
 ├── EXAMPLES.md
 ├── schemas/
 │   ├── learning-goal.schema.json
+│   ├── profile.schema.json
 │   ├── knowledge-node.schema.json
 │   ├── learner-state.schema.json
 │   ├── lesson-plan.schema.json
@@ -203,7 +204,7 @@ skill/
 
 ## 下一步
 
-1. 接入一个主动式 agent runtime，跑通定时唤醒、推送、对话和记忆写回。
+1. 接入一个主动式 agent runtime，跑通首次校准中的推送偏好配置、定时唤醒、推送、对话和记忆写回。
 2. 用现有 starter graph 做初次校准和 7 天学习实验。
 3. 增加状态校验脚本，确保 lesson plan 和 learning event 符合 schema。
 4. 扩展更多学习目标的 intent pattern 和知识图谱生成策略。

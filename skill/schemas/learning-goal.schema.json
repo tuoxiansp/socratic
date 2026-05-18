@@ -58,9 +58,6 @@
         "calculation_intensity": {
           "type": "string",
           "enum": ["none", "low", "medium", "high"]
-        },
-        "preferred_push_frequency": {
-          "type": "string"
         }
       },
       "additionalProperties": true

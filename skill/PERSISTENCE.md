@@ -79,14 +79,42 @@ Do not use raw email addresses, phone numbers, or display names in paths.
 ```json
 {
   "skill_name": "socratic",
-  "skill_version": "0.1.0",
-  "state_schema_version": "0.1.0",
+  "skill_version": "0.2.0",
+  "state_schema_version": "0.2.0",
   "created_at": "2026-05-14T00:00:00Z",
   "updated_at": "2026-05-14T00:00:00Z"
 }
 ```
 
-`profile.json` stores learner-level preferences that are not tied to one goal, such as preferred pace, emotional constraints, locale, and notification preferences.
+`profile.json` stores learner-level preferences that are not tied to one goal, such as preferred pace, emotional constraints, locale, timezone, and notification preferences.
+
+Example:
+
+```json
+{
+  "learner_key": "user_opaque123",
+  "locale": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "preferred_pace": "gentle",
+  "session_minutes": 15,
+  "notification_preferences": {
+    "enabled": true,
+    "frequency": "daily",
+    "preferred_time_window": {
+      "start": "20:00",
+      "end": "21:30"
+    },
+    "quiet_hours": {
+      "start": "22:30",
+      "end": "09:00"
+    },
+    "quiet_days": [],
+    "max_push_length": "one_question"
+  }
+}
+```
+
+If proactive pushes are not explicitly enabled by the user, persist `notification_preferences.enabled` as `false`.
 
 `goals/<goal_id>.json` stores one `learning_goal`.
 
@@ -133,11 +161,12 @@ Append events to `events/<goal_id>/YYYY-MM.jsonl`, where `<goal_id>` matches the
 Before planning a lesson, read:
 
 1. `manifest.json`
-2. the active or selected `learning_goal`
-3. relevant `knowledge_node` files
-4. relevant `learner_state` files
-5. recent `events/<goal_id>/YYYY-MM.jsonl`
-6. `reviews/due.json` if present
+2. `profile.json`
+3. the active or selected `learning_goal`
+4. relevant `knowledge_node` files
+5. relevant `learner_state` files
+6. recent `events/<goal_id>/YYYY-MM.jsonl`
+7. `reviews/due.json` if present
 
 If the state schema version is newer than the skill supports, the agent should stop and ask the runtime to update the skill instead of guessing.
 

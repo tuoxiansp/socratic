@@ -12,6 +12,7 @@ The runtime should provide:
 - retrieval tools
 - notification delivery
 - timestamp and locale
+- a way to enable, disable, or update proactive push configuration after user consent
 
 The skill provides:
 
@@ -30,11 +31,28 @@ Process:
 1. Ask why the user wants to learn now.
 2. Ask what they are afraid of or tired of in past learning.
 3. Ask for preferred pace and session length.
-4. Give one low-stakes question.
-5. Observe how the user reasons, not only whether they are correct.
-6. Create an initial `learning_goal`, starter graph scope, and first node states.
+4. Ask whether they want proactive lesson pushes.
+5. If they want pushes, ask for push frequency, preferred time window, quiet days or hours, and maximum interruption level.
+6. If the runtime can configure scheduling, create or update the schedule before ending calibration. If it cannot, record a clear setup action for the runtime owner.
+7. Give one low-stakes question.
+8. Observe how the user reasons, not only whether they are correct.
+9. Create an initial learner `profile`, `learning_goal`, starter graph scope, and first node states.
 
 Avoid asking the user to fill a long form. Calibrate through conversation.
+
+The push decision is part of calibration, not an optional afterthought. Persist it in `profile.json` even when the user declines pushes so future agents do not keep asking.
+
+Minimum push preference fields:
+
+- `enabled`
+- `frequency`
+- `preferred_time_window`
+- `quiet_hours`
+- `quiet_days`
+- `timezone`
+- `max_push_length`
+
+If the user has not explicitly opted in, default `enabled` to `false`.
 
 ## Entry: Proactive Lesson Push
 
@@ -42,12 +60,14 @@ Use when the agent wakes up daily or periodically.
 
 Process:
 
-1. Read recent learning events and due reviews.
-2. Choose one next action.
-3. Generate one question and one short opening message.
-4. Push only the question and a gentle invitation.
-5. If the user responds, run the Socratic flow.
-6. If the user ignores it, do not mark failure; record a skipped opportunity only if useful.
+1. Read `profile.json` and stop if proactive pushes are disabled.
+2. Confirm the current wake-up is inside the user's allowed push window.
+3. Read recent learning events and due reviews.
+4. Choose one next action.
+5. Generate one question and one short opening message.
+6. Push only the question and a gentle invitation.
+7. If the user responds, run the Socratic flow.
+8. If the user ignores it, do not mark failure; record a skipped opportunity only if useful.
 
 Preferred push style:
 

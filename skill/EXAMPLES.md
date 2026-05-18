@@ -1,5 +1,36 @@
 # Examples
 
+## Example: Initial Calibration Profile
+
+After initial calibration, persist the learner-level profile before planning proactive pushes:
+
+```json
+{
+  "learner_key": "user_opaque123",
+  "locale": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "preferred_pace": "gentle",
+  "session_minutes": 15,
+  "notification_preferences": {
+    "enabled": true,
+    "frequency": "daily",
+    "preferred_time_window": {
+      "start": "20:00",
+      "end": "21:30"
+    },
+    "quiet_hours": {
+      "start": "22:30",
+      "end": "09:00"
+    },
+    "quiet_days": [],
+    "max_push_length": "one_question",
+    "runtime_schedule_ref": "cron:socratic-daily-learning"
+  }
+}
+```
+
+If the user has not opted in, set `notification_preferences.enabled` to `false` and do not create a schedule.
+
 ## Example: Plan Next Lesson
 
 Input context:

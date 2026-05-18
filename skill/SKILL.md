@@ -1,6 +1,6 @@
 ---
 name: socratic
-version: "0.1.0"
+version: "0.2.0"
 description: Builds personalized learning plans, knowledge graphs, and Socratic lesson flows for proactive learning agents. Use when a user wants an AI learning coach, active lesson planning, daily learning prompts, knowledge-map based study, or on-demand guided learning.
 ---
 
@@ -51,10 +51,11 @@ The agent may continue through multiple lessons, but must stop or slow down when
    - combine known nodes into a harder problem
    - lower abstraction to restore confidence
    - run an initial calibration
-5. Create a lesson plan using the `lesson_plan` shape.
-6. Run the lesson Socratically.
-7. Summarize evidence from the interaction.
-8. Update learner state and append a learning event.
+5. If this is initial calibration, collect learner profile preferences, including whether proactive pushes are enabled.
+6. Create a lesson plan using the `lesson_plan` shape.
+7. Run the lesson Socratically.
+8. Summarize evidence from the interaction.
+9. Update learner state and append a learning event.
 
 ## Socratic Rules
 
@@ -73,6 +74,7 @@ The skill should never rely only on chat history. Keep structured state.
 
 Required state families:
 
+- `profile`: learner-level preferences, locale, timezone, and notification settings
 - `learning_goal`: what the user wants to move toward and why
 - `knowledge_node`: concepts, prerequisites, misconceptions, and example questions
 - `learner_node_state`: user mastery and evidence for each node

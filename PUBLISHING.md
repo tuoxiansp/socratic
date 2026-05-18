@@ -41,6 +41,7 @@ Run from the repository root:
 
 ```bash
 python3 -m json.tool skill/schemas/learning-goal.schema.json >/dev/null
+python3 -m json.tool skill/schemas/profile.schema.json >/dev/null
 python3 -m json.tool skill/schemas/knowledge-node.schema.json >/dev/null
 python3 -m json.tool skill/schemas/learner-state.schema.json >/dev/null
 python3 -m json.tool skill/schemas/lesson-plan.schema.json >/dev/null
@@ -76,8 +77,8 @@ Publish:
 clawhub skill publish ./skill \
   --slug socratic \
   --name "Socratic" \
-  --version 0.1.0 \
-  --changelog "Initial release"
+  --version 0.2.0 \
+  --changelog "Add explicit calibration-time push preferences"
 ```
 
 Inspect after publishing:
@@ -97,6 +98,7 @@ openclaw skills install socratic
 Use semantic versions:
 
 - `0.1.0`: first public skill draft
+- `0.2.0`: explicit learner profile and proactive push preference contract
 - `0.x.y`: early state model and teaching strategy changes
 - `1.0.0`: stable state schema and runtime contract
 

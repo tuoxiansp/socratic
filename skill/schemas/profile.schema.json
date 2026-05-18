@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/socratic/profile.schema.json",
+  "title": "LearnerProfile",
+  "type": "object",
+  "required": ["learner_key", "notification_preferences"],
+  "properties": {
+    "learner_key": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "preferred_pace": {
+      "type": "string"
+    },
+    "session_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "emotional_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notification_preferences": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "frequency": {
+          "type": "string",
+          "enum": ["daily", "weekdays", "weekly", "custom"]
+        },
+        "preferred_time_window": {
+          "$ref": "#/$defs/time_window"
+        },
+        "quiet_hours": {
+          "$ref": "#/$defs/time_window"
+        },
+        "quiet_days": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          }
+        },
+        "max_push_length": {
+          "type": "string",
+          "enum": ["one_question", "short_invitation", "custom"]
+        },
+        "runtime_schedule_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "time_window": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "end": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

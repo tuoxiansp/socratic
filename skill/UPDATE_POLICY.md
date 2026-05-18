@@ -34,10 +34,26 @@ Current versions:
 
 ```json
 {
-  "skill_version": "0.1.0",
-  "state_schema_version": "0.1.0"
+  "skill_version": "0.2.0",
+  "state_schema_version": "0.2.0"
 }
 ```
+
+## Migration Notes
+
+### `0.1.0` to `0.2.0`
+
+This update makes learner profile and proactive push preferences explicit.
+
+Migration procedure:
+
+1. Create `users/<learner_key>/profile.json` if it does not already exist.
+2. Set `learner_key` from the runtime's stable learner key.
+3. Preserve existing locale, timezone, pace, session length, and emotional constraints if the runtime already stores them.
+4. If an old `learning_goal.constraints.preferred_push_frequency` exists, copy it to `profile.notification_preferences.frequency`.
+5. Set `profile.notification_preferences.enabled` to `false` unless there is explicit evidence that the user opted in to proactive pushes.
+6. Do not create a schedule during migration solely from inferred preferences. Scheduling requires user consent or an existing runtime schedule.
+7. Validate the created profile against `profile.schema.json`.
 
 ## Migration Required Conditions
 
@@ -107,7 +123,7 @@ Each successful migration should append one JSON object to the learner's `migrat
   "started_at": "2026-05-14T00:00:00Z",
   "completed_at": "2026-05-14T00:00:03Z",
   "backup_path": "socratic/backups/20260514T000000Z-pre-update-0.1.0-to-0.2.0",
-  "summary": "Added optional review policy fields; no event rewrite needed."
+  "summary": "Created learner profile with explicit notification preferences; no event rewrite needed."
 }
 ```
 
@@ -117,6 +133,7 @@ After any migration, validate:
 
 - every JSON file parses
 - every JSONL line parses independently
+- each learner `profile.json` matches `profile.schema.json`
 - each `learning_goal` matches `learning-goal.schema.json`
 - each `knowledge_node` matches `knowledge-node.schema.json`
 - each `learner_node_state` matches `learner-state.schema.json`
